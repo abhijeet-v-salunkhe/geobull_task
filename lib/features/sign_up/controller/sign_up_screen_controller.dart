@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geobull_task/core/network/firebase_set_up.dart';
-import 'package:geobull_task/features/sign_up/home/home_screen.dart';
+import 'package:geobull_task/features/home/home_screen.dart';
 import 'package:get/get.dart';
 
 class SignUpScreenController extends GetxController {
@@ -46,7 +46,6 @@ class SignUpScreenController extends GetxController {
 
   Future<void> submitData() async {
     try {
-      Get.to(HomeScreen());
       isLoading = true;
       update();
       FirebaseFirestore db = FirebaseFirestore.instance;
@@ -64,6 +63,7 @@ class SignUpScreenController extends GetxController {
         collectionName: "users",
       );
       if (id != null) {
+        Get.to(HomeScreen());
         log("Doc Ref id : $id");
       }
 
